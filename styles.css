@@ -1,28 +1,28 @@
 :root {
-  /* Palette */
-  --blue-slate: #545e75;
-  --cool-sky: #63adf2;
-  --icy-blue: #a7cced;
-  --dusk-blue: #304d6d;
-  --steel-blue: #82a0bc;
+  /* Palette — colors of the Spanish flag */
+  --rojo: #aa151b;
+  --rojo-dark: #7d0f14;
+  --gualda: #f1bf00;
+  --gualda-light: #fbe7a1;
+  --tierra: #6e5a50;
 
   /* Light theme tokens */
-  --bg: #e8f0f8;
+  --bg: #fbf6ea;
   --surface: #ffffff;
-  --surface-2: #dde9f5;
-  --text: #1c2b3d;
-  --muted: var(--blue-slate);
-  --border: #c8d9ea;
-  --accent: var(--dusk-blue);
+  --surface-2: #f5ecd6;
+  --text: #2a1a14;
+  --muted: var(--tierra);
+  --border: #ead9b8;
+  --accent: var(--rojo);
   --accent-ink: #ffffff;
-  --cta: var(--cool-sky);
-  --cta-ink: #0f2236;
+  --cta: var(--gualda);
+  --cta-ink: #3a1d0a;
   --ok: #2f7d4f;
   --ok-bg: #e3f2e8;
   --bad: #b3402f;
   --bad-bg: #f8e4e0;
   --warn: #b35500;
-  --blank: var(--steel-blue);
+  --blank: #dcc48c;
   --radius: 12px;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -31,20 +31,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #141d29;
-    --surface: #1d2b3d;
-    --surface-2: #253850;
-    --text: #e6eef7;
-    --muted: var(--steel-blue);
-    --border: #2f4560;
-    --accent: var(--icy-blue);
-    --accent-ink: #141d29;
+    --bg: #1c1210;
+    --surface: #2a1b17;
+    --surface-2: #3a2520;
+    --text: #f6ece0;
+    --muted: #c9ae98;
+    --border: #4a302a;
+    --accent: var(--gualda);
+    --accent-ink: #1c1210;
     --ok: #6cc28f;
     --ok-bg: #173329;
     --bad: #ec8170;
     --bad-bg: #3a2329;
     --warn: #f8a04a;
-    --blank: var(--blue-slate);
+    --blank: #6b4a3a;
     color-scheme: dark;
   }
 }
@@ -73,7 +73,16 @@ a { color: inherit; }
   padding: calc(12px + env(safe-area-inset-top, 0px)) 20px 12px;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+}
+/* Spanish flag stripe: rojo, gualda (double width), rojo */
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background: linear-gradient(var(--rojo) 25%, var(--gualda) 25% 75%, var(--rojo) 75%);
 }
 
 .brand {
@@ -89,7 +98,8 @@ a { color: inherit; }
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--cta);
+  background: var(--gualda);
+  box-shadow: 0 0 0 2px var(--rojo);
 }
 
 main {
