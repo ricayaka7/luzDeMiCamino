@@ -1,5 +1,5 @@
 :root {
-  /* Palette — colors of the Spanish flag */
+  /* Palette — red and gold of the Spanish flag */
   --rojo: #aa151b;
   --rojo-dark: #7d0f14;
   --gualda: #f1bf00;
@@ -73,16 +73,7 @@ a { color: inherit; }
   padding: calc(12px + env(safe-area-inset-top, 0px)) 20px 12px;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(8px);
-}
-/* Spanish flag stripe: rojo, gualda (double width), rojo */
-.topbar::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 6px;
-  background: linear-gradient(var(--rojo) 25%, var(--gualda) 25% 75%, var(--rojo) 75%);
+  border-bottom: 1px solid var(--border);
 }
 
 .brand {
@@ -99,7 +90,6 @@ a { color: inherit; }
   height: 10px;
   border-radius: 50%;
   background: var(--gualda);
-  box-shadow: 0 0 0 2px var(--rojo);
 }
 
 main {
