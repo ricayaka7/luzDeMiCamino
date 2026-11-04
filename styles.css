@@ -1,28 +1,27 @@
 :root {
-  /* Palette — red and gold of the Spanish flag */
-  --rojo: #aa151b;
-  --rojo-dark: #7d0f14;
-  --gualda: #f1bf00;
-  --gualda-light: #fbe7a1;
-  --tierra: #6e5a50;
+  /* Palette — Rose quartz evening */
+  --vino: #64242f;
+  --ladrillo: #b44446;
+  --rosa: #fc8f8f;
+  --perla: #dfd9d8;
 
   /* Light theme tokens */
-  --bg: #fbf6ea;
+  --bg: #f4f0ef;
   --surface: #ffffff;
-  --surface-2: #f5ecd6;
-  --text: #2a1a14;
-  --muted: var(--tierra);
-  --border: #ead9b8;
-  --accent: var(--rojo);
+  --surface-2: var(--perla);
+  --text: #3d151c;
+  --muted: #7a4a52;
+  --border: #d3c8c6;
+  --accent: var(--ladrillo);
   --accent-ink: #ffffff;
-  --cta: var(--gualda);
-  --cta-ink: #3a1d0a;
+  --cta: var(--rosa);
+  --cta-ink: var(--vino);
   --ok: #2f7d4f;
   --ok-bg: #e3f2e8;
   --bad: #b3402f;
   --bad-bg: #f8e4e0;
   --warn: #b35500;
-  --blank: #dcc48c;
+  --blank: #e2b5b6;
   --radius: 12px;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -31,20 +30,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1c1210;
-    --surface: #2a1b17;
-    --surface-2: #3a2520;
-    --text: #f6ece0;
-    --muted: #c9ae98;
-    --border: #4a302a;
-    --accent: var(--gualda);
-    --accent-ink: #1c1210;
+    --bg: #2a1015;
+    --surface: #381820;
+    --surface-2: #4a2029;
+    --text: #f4eceb;
+    --muted: #d2b9ba;
+    --border: #5c2e38;
+    --accent: var(--rosa);
+    --accent-ink: #3d151c;
+    --cta: var(--ladrillo);
+    --cta-ink: #ffffff;
     --ok: #6cc28f;
     --ok-bg: #173329;
     --bad: #ec8170;
     --bad-bg: #3a2329;
     --warn: #f8a04a;
-    --blank: #6b4a3a;
+    --blank: #6a3340;
     color-scheme: dark;
   }
 }
@@ -89,7 +90,7 @@ a { color: inherit; }
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--gualda);
+  background: var(--rosa);
 }
 
 main {
@@ -457,3 +458,66 @@ input[type="range"] { flex: 1; accent-color: var(--accent); }
   z-index: 20;
   max-width: calc(100% - 32px);
 }
+
+/* ---------- Guía, versículos y pegado ---------- */
+
+.app-version {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 0 20px calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+.help { display: grid; gap: 8px; margin-top: 16px; }
+.help-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 16px;
+}
+.help-item summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.help-item[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+.help-item p, .help-item ul, .help-item ol { font-size: 0.95rem; margin: 10px 0; }
+.help-item ul, .help-item ol { padding-left: 20px; }
+.help-item li { margin: 4px 0; }
+.help-item a { color: var(--accent); font-weight: 600; }
+.entry { min-height: 200px; }
+.draft-msg { margin: 0 0 4px; }
+.ask { color: var(--warn); }
+input.missing, textarea.missing { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn); }
+
+.vline { display: block; }
+.vline + .vline { margin-top: 0.3em; }
+.vnum {
+  font: 600 0.58em var(--sans);
+  color: var(--muted);
+  vertical-align: 0.55em;
+  line-height: 0;
+  margin-right: 0.3em;
+  user-select: none;
+}
+.card-text .vnum { margin-left: 0.2em; }
+.text-tools { margin-top: 6px; align-items: center; gap: 10px; flex-wrap: wrap; }
+.text-tools .lookup-msg { margin: 0; }
+
+/* ---------- Voz ---------- */
+
+.mic-btn { font-size: 1.05rem; padding: 12px 20px; border-radius: 999px; }
+.mic-btn.on { background: var(--bad); border-color: var(--bad); color: #fff; animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--bad) 22%, transparent); } }
+.say-bar { display: flex; justify-content: center; margin: 8px 0 16px; }
+.heard { min-height: 3em; margin: 0 0 8px; padding: 12px 14px; background: var(--surface-2); border-radius: 12px; color: var(--muted); font-style: italic; }
+
+.phrase { cursor: pointer; border-radius: 4px; padding: 0 2px; }
+.phrase.now { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.hidden-words .phrase { color: transparent; background: var(--blank); user-select: none; }
+.hidden-words .phrase.now { background: color-mix(in srgb, var(--accent) 55%, transparent); }
+.repeat-tools { justify-content: center; }
+
+.check { display: flex; align-items: center; gap: 10px; margin: 20px 0 4px; font-size: 1rem; cursor: pointer; }
+.check input { width: 22px; height: 22px; accent-color: var(--accent); }
+.check-note { margin: 0 0 8px; font-size: 0.85rem; }
+
+/* Ayuda por voz: bigger targets for the voice controls. */
+.voice-help .mic-btn, .voice-help #speak, .voice-help .repeat-tools .btn { font-size: 1.15rem; min-height: 52px; }
+.voice-help .tab { font-size: 1rem; padding: 12px 16px; }

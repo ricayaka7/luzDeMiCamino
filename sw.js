@@ -1,7 +1,7 @@
 /* Offline support: serve the app shell from cache, refresh it in the background.
  * Bump CACHE when files change so installed copies pick up the update. */
 
-const CACHE = "luzdemicamino-v3";
+const CACHE = "luzdemicamino-v4";
 const FILES = [
   "./",
   "index.html",
